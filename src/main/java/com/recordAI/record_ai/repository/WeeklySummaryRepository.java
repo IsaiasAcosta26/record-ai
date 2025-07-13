@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface WeeklySummaryRepository extends JpaRepository<WeeklySummary, Long> {
     List<WeeklySummary> findByUserId(Long userId);
+    List<WeeklySummary> findByUserIdOrderByWeekStartDateDesc(Long userId);
+
 }

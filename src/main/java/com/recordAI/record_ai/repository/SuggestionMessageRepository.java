@@ -10,4 +10,5 @@ public interface SuggestionMessageRepository extends JpaRepository<SuggestionMes
     List<SuggestionMessage> findByUserIdAndCreatedAtBetween(Long userId, LocalDateTime start, LocalDateTime end);
     List<SuggestionMessage> findByUserIdOrderByCreatedAtDesc(Long userId);
 
+
 }
