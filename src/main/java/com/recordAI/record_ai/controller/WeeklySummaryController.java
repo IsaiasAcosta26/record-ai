@@ -1,6 +1,8 @@
 package com.recordAI.record_ai.controller;
 
 import com.recordAI.record_ai.dto.WeeklySummaryDto;
+import com.recordAI.record_ai.model.WeeklySummary;
+import com.recordAI.record_ai.repository.WeeklySummaryRepository;
 import com.recordAI.record_ai.service.WeeklySummaryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,12 @@ import java.util.List;
 public class WeeklySummaryController {
 
     private final WeeklySummaryService service;
+    private final WeeklySummaryRepository repository;
+
+    @GetMapping("/list")
+    public List<WeeklySummary> getSummaries(@RequestParam Long userId) {
+        return repository.findByUserIdOrderByWeekStartDateDesc(userId);
+    }
 
     @GetMapping
     public List<WeeklySummaryDto> findAll() {
